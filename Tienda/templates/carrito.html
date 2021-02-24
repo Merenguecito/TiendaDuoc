@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends "plantillaBase.html" %}
+<html lang="es">
+    <head>
+        {% block titulo %}
+        <title>Carro de compras</title>
+        {% endblock %}
+
+    </head>
+    <body>
+    {% block contenido %}
+
+        <h1>Carro de compras</h1>
+{% for elemento in lista_carrito %}
+        <div class="row">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <img src="{{ elemento.img_producto.url }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h3 class="card-title mt-2">{{elemento.nombre}} </h3>
+                        <p class="card-text">{{elemento.descripcion}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+        
+    {% endblock %}
+
+
+    </body>
+
+</html>

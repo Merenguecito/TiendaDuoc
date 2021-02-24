@@ -1,0 +1,88 @@
+{% extends "plantillaBase.html" %}
+{% load static %}
+{% block titulo %}
+	<script src="{% static 'JavaScript/sucursalApiFetch.js' %}"></script>
+    <script src="{% static 'JavaScript/notificaciones.js' %}"></script>
+    
+{% endblock %}
+    
+    {% block contenido %}
+        <div class="row justify-content-center">
+            <h1>Registro de sucursales Api Fetch</h1>
+        </div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Id
+			</div>
+			<div class="col-8 col-sm-4">
+				<input type="text" name="txtId" class="form-control txtId" value="{{ item.id }}">
+			</div>
+			<div class="col-4 col-sm-2">
+				<input type="submit" name="btnBuscar" onclick="apiFetch();" class="btn btn-warning btn-block btnBuscar"  value="Buscar">
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Nombre
+			</div>
+			<div class="col-12 col-sm-6">
+				<input type="text" name="txtNombre" class="form-control txtNombre" value="{{ item.nombre }}">
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Dirección
+			</div>
+			<div class="col-12 col-sm-6">
+				<input type="text" name="txtDireccion" class="form-control txtDireccion" value="{{ item.direccion }}">
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Teléfono
+			</div>
+			<div class="col-12 col-sm-6">
+				<input type="text" name="txtTelefono" class="form-control txtTelefono" value="{{ item.telefono }}">
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Encargado
+			</div>
+			<div class="col-12 col-sm-6">
+				<input type="text" name="txtEncargado" class="form-control txtEncargado" value="{{ item.encargado }}">
+			</div>
+		</div>
+		<br>
+		<div class="row justify-content-center">
+			<div class="col-12 col-sm-2">
+				Opciones
+			</div>
+			<div class="col-12 col-sm-6">
+				<input type="submit" name="btnGrabar" class="btn btn-danger btnGrabar"  value="Grabar">
+				<input type="submit" name="btnListar" class="btn btn-success btnListar" value="Listar">
+				<input type="submit" name="btnLimpiar" class="btn btn-light btnLimpiar" value="Limpiar">
+			</div>
+		</div>		
+
+	<div class="row justify-content-center divListado">
+		<div>
+			<div class="table-responsive">
+				<table class="table">
+					<thead class="table-active">
+						<th>#</th>
+						<th>Nombre</th>
+						<th>Dirección</th>
+						<th>Teléfono</th>
+						<th>Encargado</th>
+					</thead>
+					<tbody class="tblBody">
+
+					</tbody>
+				</table>
+			</div>
+		</div>	
+	</div>		
+{% endblock %}

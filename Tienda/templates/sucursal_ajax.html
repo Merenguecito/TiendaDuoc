@@ -1,0 +1,93 @@
+{% extends "plantillaBase.html" %}
+{% load static %}
+{%  block titulo %}
+        <!--script src="{% static 'JavaScript/Sucursal_Ajax.js' %}"></script>
+        <script src="{% static 'JavaScript/jquery.min.js' %}"></script-->
+        <div class="row justify-content-center">
+                <h1>Registro de sucursales Ajax</h1>
+        </div>
+{% endblock %}
+
+{% block contenido %}
+        <form method="pos>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                        Id
+                </div>
+                <div class="col-8 col-sm-4">
+                        <input type="text" name="txtId" class="form-control txtId" value="{{ item.id }}">
+                </div>
+                <div class="col-4 col-sm-2">
+                        <input type="submit" name="btnBuscar" class="btn btn-warning btn-block btnBuscar"  value="Buscar">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                        Nombre
+                </div>
+                <div class="col-12 col-sm-6">
+                        <input type="text" name="txtNombre" class="form-control txtNombre" value="{{ item.nombre }}">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                        Dirección
+                </div>
+                <div class="col-12 col-sm-6">
+                        <input type="text" name="txtDireccion" class="form-control txtDireccion" value="{{ item.direccion }}">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                        Teléfono
+                </div>
+                <div class="col-12 col-sm-6">
+                        <input type="text" name="txtTelefono" class="form-control txtTelefono" value="{{ item.telefono }}">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                        Encargado
+                </div>
+                <div class="col-12 col-sm-6">
+                        <input type="text" name="txtEncargado" class="form-control txtEncargado" value="{{ item.encargado }}">
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-2">
+                    Opciones
+                </div>
+                <div class="col-12 col-sm-6">
+                    <input type="submit" name="btnGrabar" class="btn btn-danger btnGrabar"  value="Grabar">
+                    <input type="submit" name="btnListar" class="btn btn-success btnListar" value="Listar">
+                    <input type="submit" name="btnLimpiar" class="btn btn-light btnLimpiar" value="Limpiar">
+                </div>
+            </div>                
+        </form>
+        <div class="row justify-content-center divListado">
+            <div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Modelo</th>
+                                <th>Precio Venta</th>
+                                <th>Precio Compra</th>
+                                <th>Stock</th>
+                                <th>Categoria</th>
+                                <th>Marca</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tblBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>        
+        </div>                
+{% endblock %}

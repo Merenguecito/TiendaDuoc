@@ -1,0 +1,28 @@
+{
+        "name"                  : "Tienda Computadores Z",
+        "short_name"            : "Computadores Z",
+        "Description"           : "Super carrito de compras online",
+        "background_color"      : "#454545",
+        "orientation"           : "portrait",
+        "display"               : "standalone",
+        "start_url"             : "../../tienda",
+        "scope"                 : "/tienda",
+        "lang"                  : "es-CL",
+        "icons": [
+                {
+                        "src": "../static/Images/logoDuoc64.ico",
+                        "sizes": "64x64",
+                        "type": "image/ico"
+                },
+                {
+                        "src": "../static/Images/logoDuoc128.png",
+                        "sizes": "128x128",
+                        "type": "image/png"
+                },
+                {
+                        "src": "../static/Images/logoDuoc144.png",
+                        "sizes": "144x144",
+                        "type": "image/png"
+                }
+        ]
+}

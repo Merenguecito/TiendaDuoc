@@ -1,0 +1,86 @@
+li:hover{
+	color: black;
+}
+
+.logo img{
+	width: 88px;
+	}
+
+
+
+#boxmio{
+	/*margin-right: 20px;*/
+	margin-bottom: 20px;
+}
+
+#cardImg{
+	width: 18rem;
+	height: 18rem;
+	-webkit-transition: -webkit-transform 0.2s ease-in-out 0.1s;
+}
+#cardImg:hover{
+	-webkit-transform: scale(1.2);
+}
+
+section{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+#btnCarrito{
+	margin-left: 10px;
+}
+
+
+.sidenav {
+	height: 100%; /* 100% Full-height */
+	width: 0px; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	right: 0;
+	background-color: #3F3E3E; /* Gray*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 10px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+
+  /* The navigation menu links */
+  .sidenav a {
+	text-decoration: none;
+	font-size: 30px;
+	margin-bottom: 5px;
+	margin-left: 20px;
+	display: block;
+	color: #818181;
+	transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+	color: #f1f1f1;
+  }
+
+  .sidenav .row{
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+  }
+ /* Position and style the close button (top right corner) */
+.sidenav .closebtn{
+	font-size: 50px;
+}
+
+  #main {
+	transition: margin-right .5s;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
+
+

@@ -1,0 +1,196 @@
+{% extends "plantillaBase.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+{% block titulo %}
+        <title>Administracion Productos</title>
+        <link rel="stylesheet" href="{% static 'CSS/Admin_Productos.css' %}">
+        <script src="{% static 'JavaScript/Admin_Productos.js' %}"></script>
+        <script src="{% static 'JavaScript/Sucursal_Ajax.js' %}"></script>
+        <script src="{% static 'JavaScript/jquery.min.js' %}"></script>
+        <script src="{% static 'JavaScript/notificaciones.js' %}"></script>
+        <script src="{% static 'JavaScript/sucursalApiFetch.js' %}"></script>
+
+{% endblock %}
+    </head>
+    <body>
+{% block contenido %}    
+
+        <button class="tablink" onclick="openPage('Guardar', this, 'green')">Guardar/Actualizar</button>
+        <button class="tablink" onclick="openPage('Buscar', this, 'blue')" id="defaultOpen">Buscar</button>
+        <button class="tablink" onclick="openPage('Eliminar', this, 'red')">Eliminar</button>
+
+        <form  method="POST" >
+            <div id="Guardar" class="tabcontent">
+                <div class="container-fluid">
+                    <h3>Guardar/Actualizar</h3>
+                    <p>Introduzca los datos para añadir o actualizar productos</p>
+{{ mensaje }}
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">   
+                                <label>Nombre</label>
+                                <input type="text" class="form-control txtNombre" name="txtNombre" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Modelo</label>
+                                <input type="text" class="form-control" name="txtModelo" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Precio Venta</label>
+                                <input type="number" class="form-control" name="txtPrecioVenta" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Precio Compra</label>
+                                <input type="number" class="form-control" name="txtPrecioCompra" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">      
+                                <label>Descripción</label>
+                                <input type="text" class="form-control" name="txtDescripcion" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Stock</label>
+                                <input type="number" class="form-control" name="txtStock" required/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Categoría</label>
+                                <select class="custom-select" name="txtCategoria" required>
+                                    <option selected disabled value="">Seleccionar...</option>
+{% for elemento in lista_categorias %}
+                                    <option value="{{elemento.id_categoria}}">{{elemento.nombre}}</option>
+{% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Marca</label>
+                                <select class="custom-select" name="txtMarca" required>
+                                    <option selected disabled value="">Seleccionar...</option>
+{% for elemento in lista_marcas %}
+                                    <option value="{{elemento.codigo}}">{{elemento.nombre}}</option>
+{% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>File input</label>
+                                <input type="file" class="form-control-file" name="img_producto" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"> 
+                            <input type="submit" class="btn btn-success" value="Guardar" name="btnGuardar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="Buscar" class="tabcontent">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md">
+                            <h3 >Buscar producto</h3>
+                            <p>Ingrese el código de producto a buscar</p>
+{{ mensaje }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Código</label>
+                                <input type="text" class="form-control txtBuscaCodigo" name="txtBuscaCodigo"  />
+                                <input type="text" class="form-control txtNombreBuscar" name="txtNombreBuscar"  />
+                            </div>
+                            <input type="submit" class="btn btn-success btnBuscar" onclick="apiFetch();" name="btnBuscar" value="Buscar">
+                            <input type="submit" class="btn btn-success btnListar" name="btnListar" value="Listar">
+
+
+                        </div>
+                        <div class="col-md-9 divListado">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <th scope="col">id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Precio Venta</th>
+                                    <th scope="col">Precio Compra</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Marca</th>
+                                </thead>
+                                <tbody class="tblBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="Eliminar" class="tabcontent">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md">
+                            <h3>Eliminar producto</h3>
+                            <p>Ingrese el código de producto a eliminar</p>
+{{ mensaje }}
+{{myFilter.form}}
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Código</label>
+                                <input type="text" class="form-control" name="txtEliminaCodigo" />
+                            </div>
+                            <input type="submit" class="btn btn-success" name="btnEliminar" value="Eliminar">
+                        </div>
+                        <div class="col-md-9 divListado">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <th scope="col">id</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Precio Venta</th>
+                                    <th scope="col">Precio Compra</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Marca</th>
+                                    <th scope="col">Imagen</th>
+                                </thead>
+                                <tbody>
+    {% for elemento in lista_productos %}
+                                <tr>
+                                    <td>{{elemento.id}}</td>
+                                    <td>{{elemento.nombre}}</td>
+                                    <td>{{elemento.modelo}}</td>
+                                    <td>{{elemento.precio}}</td>
+                                    <td>vacío</td>
+                                    <td>{{elemento.descripcion}}</td>
+                                    <td>{{elemento.stock}}</td>
+                                    <td>vacío</td>
+                                    <td>{{elemento.marca}}</td>
+                                    <td><img class="w-100" src="{{elemento.img_producto.url}}" ></td>
+                                </tr>
+    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock %}
+    </body>
+</html>
